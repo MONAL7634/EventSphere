@@ -1,9 +1,8 @@
 import axios from "axios";
 
 const axiosInstance = axios.create({
-  baseURL: "http://localhost:5000",
+  baseURL: "https://eventsphere-46xl.onrender.com",
 });
-
 
 axiosInstance.interceptors.request.use((config) => {
   let token = null;
@@ -20,14 +19,11 @@ axiosInstance.interceptors.request.use((config) => {
     console.error("Error parsing persisted user data:", error);
   }
 
-  
-   if (token) {
+  if (token) {
     config.headers.Authorization = `Bearer ${token}`;
-  }  
+  }
 
   return config;
 });
 
 export default axiosInstance;
-
-
